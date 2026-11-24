@@ -6,6 +6,8 @@
 // The program writes the entry sentence to /output/entry.txt
 // (or $OUTPUT_DIR/entry.txt), validated to the bounty gate:
 // UTF-8 text, 1..200 characters, not whitespace-only.
+// The sentence is a single line: no newline, no control characters,
+// no leading or trailing whitespace — exactly what the gate checks.
 
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
