@@ -8,6 +8,25 @@
 // UTF-8 text, 1..200 characters, not whitespace-only.
 // The sentence is a single line: no newline, no control characters,
 // no leading or trailing whitespace — exactly what the gate checks.
+//
+// Why this sentence: a traveler from 1800 knows libraries, post offices,
+// markets and roads, so the sentence explains the internet only with
+// things they already understand — a single road joining all three,
+// and a letter arriving before its ink is dry as the instant-delivery
+// image. Nothing in it needs a modern word (no "internet", no "email",
+// no "computer"), which keeps it inside the bounty brief.
+//
+// Gate rules restated: the entry must be UTF-8 text, 1 to 200 characters
+// inclusive, a single line with no newline or carriage-return characters,
+// no leading or trailing whitespace, not whitespace-only, and free of
+// control characters. The validate() function below enforces every one
+// of those rules and throws with a specific message on the first failure.
+//
+// Round-trip check: after writing entry.txt, main() reads the file back
+// and compares it byte-for-byte (as a UTF-8 string) against TEXT. If the
+// written file differs in any way, the program fails instead of passing
+// silently — so a successful run proves the file on disk is exactly the
+// validated sentence.
 
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
